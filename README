@@ -1,0 +1,96 @@
+Extract all words from tamil wikipedia dump.
+
+Get the wikipedia dump from the following url
+http://dumps.wikimedia.org/tawiki/latest/
+
+tawiki-latest-pages-articles.xml.tar.bz2
+
+extract it using the following command.
+
+Tar xvjf  tawiki-latest-pages-articles.xml.tar.bz2
+
+
+
+
+1. shell script  seperate the words
+
+cat line.sh 
+#!/bin/bash 
+for WORD in `cat tawiki-latest-pages-articles.xml` 
+do 
+    echo $WORD 
+done 
+
+
+
+Run the script
+sh ./line.sh > all 
+
+
+
+2. sort it
+
+
+sort all > all.sorted 
+
+
+3. find unique words
+
+uniq all.sorted > all.unique 
+
+
+4. 
+
+To remove all english charecters
+
+tr  [:graph:]  ' ' < all.unique> all.tr
+
+
+5.
+To remove all symbols
+
+tr  "\012\015\041\042\043\044\045\046\047\050\051\053\054\055\056\057\060\061\062\06‌​3\064\065\066\067\070\071\073\074\075\076\077\100\101\102\103\104\105\106\107\110\‌​111\112\113\114\115\116\117\120\121\122\123\124\125\126\127\130\131\132\133\135\1‌​40\173\174\175" '\n' < all.tr > all.tr1 
+
+
+
+
+6.
+
+To remove leading spaces and blank lines
+ cat all.tr1 | sed -e 's/^[ \t]*//' | grep -v ^$ > all.trim
+
+
+7.
+
+Sort and unique the file
+sort all.trim | uniq > all.sort.unique
+
+
+8.
+
+cp all.sort.unique tamil.sort.unique
+
+
+
+9. 
+
+python to extract only tamil words.
+
+
+find_tamil.py
+
+it will create a file with only tamil words
+
+python fine_tamil.py
+
+output : tamil-words.txt
+
+
+10.  sed '/^$/d' tamil-words.txt > final-tamil.txt
+
+
+11. count the number of words available
+
+wc -l final-tamil.txt
+1309490 tamil-words.txt
+
