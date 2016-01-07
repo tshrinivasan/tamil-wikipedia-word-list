@@ -11,26 +11,30 @@ bunzip2  tawiki-latest-pages-articles.xml.tar.bz2
 
 
 
-1. To remove all english charecters
+1.
+To remove all english charecters
 
 ```
 tr  [:graph:]  ' ' < tawiki-latest-pages-articles.xml > all.tr
 ```
 
-2. To remove all symbols
+2. 
+To remove all symbols
 
-
+```
 tr  "\012\015\041\042\043\044\045\046\047\050\051\053\054\055\056\057\060\061\062\06<200c><200b>3\064\065\066\067\070\071\073\074\075\076\077\100\101\102\103\104\105\106\107\110\<200c><200b>111\112\113\114\115\116\117\120\121\122\123\124\125\126\127\130\131\132\133\135\1<200c><200b>40\173\174\175" '\n' < all.tr > all.tr1
+```
 
-
-3. To remove leading spaces and blank lines
+3. 
+To remove leading spaces and blank lines
 ```
 cat all.tr1 | sed -e 's/^[ \t]*//' | grep -v ^$ > all.trim
 ```
 
 
 
-4. shell script to  seperate the words
+4. 
+shell script to  seperate the words
 
 ```
 cat line.sh 
@@ -47,7 +51,8 @@ Run the script
 sh ./line.sh > words
 ```
 
-5. find_tamil.py script searches for only tamil words and stores the unique tamil words to the file 'only_uniq_tamil_words.txt'
+5. 
+find_tamil.py script searches for only tamil words and stores the unique tamil words to the file 'only_uniq_tamil_words.txt'
 
 ```
 python find_tamil.py 
@@ -56,7 +61,8 @@ python find_tamil.py
 
 
 
-6. count the number of words available
+6. 
+count the number of words available
 
 ```
 wc -l only_uniq_tamil_words.txt
