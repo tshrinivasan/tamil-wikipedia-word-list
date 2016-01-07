@@ -1,4 +1,4 @@
-inputfile = 'tamil.sort.unique'
+inputfile = 'words'
 
 input = open(inputfile,'r')
 out = open('tamil-words.txt','w')
@@ -23,3 +23,15 @@ for line in input.readlines():
 
 input.close()
 out.close()
+
+
+
+tamil_words_set = set(map(str.strip, open('tamil-words.txt')))
+uniq_words = open('only_uniq_tamil_words.txt','w')
+
+for word in tamil_words_set:
+	uniq_words.write(word)
+	uniq_words.write("\n")
+uniq_words.close()
+
+

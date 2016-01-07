@@ -1,5 +1,5 @@
 #!/bin/bash
-for WORD in `cat tawiki-latest-pages-articles.xml`
+for WORD in `cat all.trim`
 do
     echo $WORD
 done
