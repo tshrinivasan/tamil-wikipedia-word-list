@@ -76,7 +76,7 @@ Now you can delete all the temporary files all.tr, all.tr1, all.trim, words and 
 If you want to sort the words, run the below command.
 
 ```
-sort only_uniq_tamil_words.txt > sorted_words.txt
+sort only_uniq_tamil_words.txt > only_tamil_uniq_sorted_words.txt
 ```
 
 This will sort the words and store in the file sorted_words.txt
