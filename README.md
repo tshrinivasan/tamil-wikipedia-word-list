@@ -69,3 +69,16 @@ wc -l only_uniq_tamil_words.txt
 
 
 Now you can delete all the temporary files all.tr, all.tr1, all.trim, words and tawiki-latest-pages-articles.xml
+
+
+##### sort the words
+
+If you want to sort the words, run the below command.
+
+```
+sort only_uniq_tamil_words.txt > sorted_words.txt
+```
+
+This will sort the words and store in the file sorted_words.txt
+
+
