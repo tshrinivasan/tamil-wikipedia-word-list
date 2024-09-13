@@ -2,7 +2,7 @@
 
 ## Download Tamil Wikipedia Dump
 
-* Get the latest Tamil Wikipedia dump from the following url ~[https://dumps.wikimedia.org/tawiki/latest/](http://dumps.wikimedia.org/tawiki/latest/)~
+* Get the latest Tamil Wikipedia dump from the following url ~[here](https://dumps.wikimedia.org/tawiki/latest/)~
 * You will download a file named  tawiki-latest-pages-articles.xml.bz2
 * Extract it using the following command:
 
