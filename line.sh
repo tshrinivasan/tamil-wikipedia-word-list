@@ -9,8 +9,20 @@ if [ ! -f "$filename" ]; then
     exit 1
 fi
 
-# Process the file
-< "$filename" sed 's/[a-zA-Z]//g' |
-tr "\012\015\041\042\043\044\045\046\047\050\051\053\054\055\056\057\060\061\062\063\064\065\066\067\070\071\073\074\075\076\077\100\101\102\103\104\105\106\107\110\111\112\113\114\115\116\117\120\121\122\123\124\125\126\127\130\131\132\133\135\140\173\174\175" '\n' |
-sed -e 's/^[ \t]*//' | grep -v ^$ |
-xargs -n 1 > words
+# Display a completion message
+echo "Processing started. Huge files can take many minutes to complete the task. Please wait. You will be informed once the task is complete."
+
+# Extract the Tamil words from the XML file using xmlstarlet and awk
+xmlstarlet sel -t -m "//text()" -v "." "$filename" |
+awk '
+    BEGIN { RS=" "; ORS="\n" }
+    /[ஃ-௿]/ {
+        # Remove non-Tamil characters
+        gsub(/[^ஃ-௿]/, "")
+        # Print non-empty words
+        if (length($0) > 0) print
+    }
+' > words
+
+# Display a completion message
+echo "Processing complete. The file 'words' contains the extracted Tamil words."
