@@ -2,20 +2,20 @@
 
 ## Download Tamil Wikipedia Dump
 
-* Get the Tamil Wikipedia dump from the following url ~[http://dumps.wikimedia.org/tawiki/latest/](http://dumps.wikimedia.org/tawiki/latest/)~
+* Get the latest Tamil Wikipedia dump from the following url ~[here](https://dumps.wikimedia.org/tawiki/latest/)~
 * You will download a file named  tawiki-latest-pages-articles.xml.bz2
 * Extract it using the following command:
 
 `bunzip2 tawiki-latest-pages-articles.xml.tar.bz2`
 
 
-This project consists of a Bash script (`line.sh`) and a Python script (`tamil.py`) that work together to process a text file, extract Tamil words, and analyze their frequency.
+This project consists of a Bash script (`line.sh`) and a Python script (`tamil-word-sorter.py`) that should be run one after another to process the xml file, extract Tamil words, and analyze their frequency.
 
 ## Files
 
 - `line.sh`: Bash script for initial text processing and word extraction
-- `tamil.py`: Python script for Tamil word identification, sorting, and frequency analysis
-- Input text file (user-provided)
+- `tamil-word-sorter.py`: Python script for Tamil word identification, sorting, and frequency analysis
+- Input xml file (user-provided)
 
 ## Prerequisites
 
@@ -38,13 +38,12 @@ This project consists of a Bash script (`line.sh`) and a Python script (`tamil.p
 2. After the Bash script completes, run the Python script:
 
    ```
-   python3 tamil.py
+   python3 tamil-word-sorter.py
    ```
 
 ## Input
 
-- You will be prompted to enter the filename of your input text file. Enter the file name you downloaded and extracted from Tamil Wikipedia dump. You can also use this project to process any word file with Tamil content provided you input the corresponding .txt file name.
-
+- You will be prompted to enter the filename of your input xml file. Enter the file name you downloaded and extracted from Tamil Wikipedia dump. 
 ## Output
 
 The Python script generates several output files:
@@ -56,7 +55,7 @@ The Python script generates several output files:
 
 ## Functionality
 
-### line.sh
+### Bash script
 
 This Bash script does the following:
 - Prompts the user for an input filename
@@ -68,7 +67,7 @@ This Bash script does the following:
   - Removing empty lines
 - Outputs the processed words to a file named `words`
 
-### tamil.py
+### Python script
 
 This Python script performs the following operations:
 - Defines a function `is_tamil()` to identify Tamil words based on Unicode character ranges
